@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    //developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    //AOP
+    // https://mvnrepository.com/artifact/aopalliance/aopalliance
+    implementation group: 'aopalliance', name: 'aopalliance', version: '1.0'
+    //Thanks for using https://jar-download.com
+    implementation group: 'org.springframework', name: 'spring-aop', version: '4.2.6.RELEASE'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
