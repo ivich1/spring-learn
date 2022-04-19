@@ -1,4 +1,4 @@
-package org.example.ch5.cut;
+package org.example.ch5.cut.staticCut;
 
 import org.aopalliance.aop.Advice;
 import org.springframework.aop.Advisor;
@@ -31,6 +31,10 @@ public class StaticPointcutDemo {
 
         proxy1.sing();
         System.out.println();
+        proxy1.tell();
+        System.out.println("\n-------");
         proxy2.sing();
+        System.out.println();
+        proxy2.tell();
     }
 }
