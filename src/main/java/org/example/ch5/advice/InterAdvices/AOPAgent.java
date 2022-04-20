@@ -15,22 +15,24 @@ public class AOPAgent {
         Agent agent = new Agent();
         AgentDecoratorFirst ad1 = new AgentDecoratorFirst();
         AgentDecorator ad2 = new AgentDecorator();
-        AgentDecoratorHi ad3 = new AgentDecoratorHi();
+        AgentDecoratorHi ad3 = new AgentDecoratorHi(); // hi{}hi
+        DecoratorDecorator dd = new DecoratorDecorator(); //декоратор -{}-
 
-        ProxyFactory dd = new ProxyFactory();
-        dd.addAdvice(new DecoratorDecorator());
-        dd.setTarget(ad1);
-        AgentDecoratorFirst adf = (AgentDecoratorFirst)dd.getProxy();
+        ProxyFactory pfDecorator = new ProxyFactory();
+        pfDecorator.setTarget(ad3);
+        pfDecorator.addAdvice(dd);
+        ad3 = (AgentDecoratorHi) pfDecorator.getProxy();
+
+        ProxyFactory pfDecorator1 = new ProxyFactory();
+        pfDecorator1.setTarget(agent);
+        pfDecorator1.addAdvice(dd);
+        agent = (Agent) pfDecorator1.getProxy();
 
         ProxyFactory pf = new ProxyFactory();
-        pf.addAdvice(adf);
-        pf.addAdvice(ad2);
+        //pf.addAdvice(ad1);
+        //pf.addAdvice(ad2);
         pf.addAdvice(ad3);
         pf.setTarget(agent);
-
-
-
-        ProxyFactory pfdd = (ProxyFactory) dd.getProxy();
 
         Agent proxy = (Agent) pf.getProxy();
 
@@ -40,8 +42,5 @@ public class AOPAgent {
         proxy.speak();
         System.out.println("");
         System.out.println("----------------------------------------");
-
-
-
     }
 }

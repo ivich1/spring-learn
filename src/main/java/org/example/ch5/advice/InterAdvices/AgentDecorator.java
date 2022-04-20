@@ -10,7 +10,7 @@ public class AgentDecorator implements MethodInterceptor {
 
         Object reValue = invocation.proceed();
 
-        System.out.print("!");
+        System.out.print("James");
 
         return reValue;
     }

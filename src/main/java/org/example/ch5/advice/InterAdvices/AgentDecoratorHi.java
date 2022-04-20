@@ -6,7 +6,7 @@ import org.aopalliance.intercept.MethodInvocation;
 public class AgentDecoratorHi implements MethodInterceptor {
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        System.out.print("Hello");
+        System.out.print("Hi");
 
         Object reValue = invocation.proceed();
 
